@@ -1,10 +1,13 @@
 use std::collections::HashMap;
 
+use fxhash::FxBuildHasher;
+
+type FxHasherHashMap<K, V> = HashMap<K, V, FxBuildHasher>;
 
 #[derive(Default, Debug)]
 struct TrieNode {
     is_end_of_word: bool,
-    children: HashMap<char, TrieNode>,
+    children: FxHasherHashMap<char, TrieNode>,
 }
 
 #[derive(Debug)]
